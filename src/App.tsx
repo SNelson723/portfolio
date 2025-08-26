@@ -1,23 +1,17 @@
-import { useState } from 'react'
+import { Outlet } from 'react-router';
+import Sidebar from './components/Sidebar';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () =>{
   return (
-    <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    <div className="w-screen h-screen bg-[#202020]">
+      <div className="w-full flex flex-col items-center">
+        <Sidebar />
+        <div className="flex-1 h-full bg-red-200">
+          <Outlet />
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App
