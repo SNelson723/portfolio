@@ -9,7 +9,7 @@ interface AppState {
 const initialState: AppState = {
   apiKey: "",
   url: "",
-  loggedIn: false,
+  loggedIn: true, // change this to false to work on the Login component
 };
 
 export const appSlice = createSlice({
