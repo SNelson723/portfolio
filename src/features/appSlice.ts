@@ -8,6 +8,7 @@ interface AppState {
   username: string;
   password: string;
   token: string;
+  name: string;
   user: User | null;
 }
 
@@ -18,6 +19,7 @@ const initialState: AppState = {
   username: "",
   password: "",
   token: "",
+  name: "",
   user: null,
 };
 
@@ -40,6 +42,9 @@ export const appSlice = createSlice({
     setToken: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
     },
+    setName: (state, action: PayloadAction<string>) => {
+      state.name = action.payload;
+    },
     setUser: (state, action: PayloadAction<User | null>) => {
       state.user = action.payload;
     },
@@ -52,6 +57,7 @@ export const {
   setUsername,
   setPassword,
   setToken,
+  setName,
   setUser,
 } = appSlice.actions;
 export default appSlice.reducer;
