@@ -1,6 +1,12 @@
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { login } from "../api/login";
-import { setLoggedIn, setUsername, setPassword } from "../features/appSlice";
+import {
+  setLoggedIn,
+  setUsername,
+  setPassword,
+  setToken,
+  setUser,
+} from "../features/appSlice";
 import useWidth from "../hooks/useWidth";
 
 const Login = () => {
@@ -9,7 +15,31 @@ const Login = () => {
 
   const width = useWidth();
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    login(context.devUrl, context.username, context.password)
+      .then((resp) => {
+        const j = resp.data;
+        console.log("Login response:", j);
+        if (j.error === 0) {
+          dispatch(setToken(j.access_token));
+          dispatch(setUser(j.user));
+          dispatch(setLoggedIn(true));
+          dispatch(setUsername(""));
+          dispatch(setPassword(""));
+        }
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+      });
+  };
+
+  // This only runs when an element is in focus
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // e.preventDefault();
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
 
   return (
     <div className="flex h-screen w-screen justify-center items-center">
@@ -36,6 +66,7 @@ const Login = () => {
             placeholder=""
             value={context.password}
             onChange={(e) => dispatch(setPassword(e.target.value))}
+            onKeyDown={handleKeyDown}
           />
           <button
             type="submit"
@@ -45,9 +76,7 @@ const Login = () => {
             Sign in
           </button>
         </div>
-        <div>
-          howdy
-        </div>
+        <div>howdy</div>
       </div>
     </div>
   );

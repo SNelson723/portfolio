@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { type User } from "../types";
 
 interface AppState {
   apiKey: string;
@@ -6,6 +7,8 @@ interface AppState {
   loggedIn: boolean;
   username: string;
   password: string;
+  token: string;
+  user: User | null;
 }
 
 const initialState: AppState = {
@@ -14,6 +17,8 @@ const initialState: AppState = {
   loggedIn: false, // change this to false to work on the Login component
   username: "",
   password: "",
+  token: "",
+  user: null,
 };
 
 export const appSlice = createSlice({
@@ -32,9 +37,21 @@ export const appSlice = createSlice({
     setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload;
     },
+    setToken: (state, action: PayloadAction<string>) => {
+      state.token = action.payload;
+    },
+    setUser: (state, action: PayloadAction<User | null>) => {
+      state.user = action.payload;
+    },
   },
 });
 
-export const { setApiKey, setLoggedIn, setUsername, setPassword } =
-  appSlice.actions;
+export const {
+  setApiKey,
+  setLoggedIn,
+  setUsername,
+  setPassword,
+  setToken,
+  setUser,
+} = appSlice.actions;
 export default appSlice.reducer;
