@@ -11,6 +11,8 @@ export type ToastAnimationtype =
 
 export type ToastType = "info" | "success" | "error" | "warning";
 
+export type ArmoireEvent = "SHOW" | "HIDE";
+
 export interface ToastProviderProps {
   children: ReactNode;
   autoClose?: boolean;
