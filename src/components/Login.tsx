@@ -15,7 +15,6 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const context = useAppSelector((state) => state.app);
   const [isCreating, setIsCreating] = useState<boolean>(false);
-
   const width = useWidth();
 
   const handleSubmit = () => {
@@ -56,9 +55,7 @@ const Login = () => {
     }
   };
 
-  // This only runs when an element is in focus
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    // e.preventDefault();
     if (e.key === "Enter") {
       handleSubmit();
     }
