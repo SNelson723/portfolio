@@ -8,13 +8,15 @@ type Todo = {
 };
 
 interface TodoState {
+  dummyUrl: string;
   url: string;
   userId: number;
   todos: Todo[];
 }
 
 const initialState: TodoState = {
-  url: "https://dummyjson.com/todos",
+  dummyUrl: "https://dummyjson.com/todos",
+  url: "",
   userId: 1,
   todos: [],
 };

@@ -2,7 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 interface AppState {
   apiKey: string;
-  url: string;
+  devUrl: string;
   loggedIn: boolean;
   username: string;
   password: string;
@@ -10,7 +10,7 @@ interface AppState {
 
 const initialState: AppState = {
   apiKey: "",
-  url: "",
+  devUrl: "http://localhost:5000/",
   loggedIn: false, // change this to false to work on the Login component
   username: "",
   password: "",
@@ -22,9 +22,6 @@ export const appSlice = createSlice({
   reducers: {
     setApiKey: (state, action: PayloadAction<string>) => {
       state.apiKey = action.payload;
-    },
-    setUrl: (state, action: PayloadAction<string>) => {
-      state.url = action.payload;
     },
     setLoggedIn: (state, action: PayloadAction<boolean>) => {
       state.loggedIn = action.payload;
@@ -38,6 +35,6 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setApiKey, setUrl, setLoggedIn, setUsername, setPassword } =
+export const { setApiKey, setLoggedIn, setUsername, setPassword } =
   appSlice.actions;
 export default appSlice.reducer;
