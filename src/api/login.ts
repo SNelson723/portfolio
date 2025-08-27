@@ -15,3 +15,17 @@ export const login = async (
   });
   return json;
 };
+
+export const createUser = async (
+  url: string,
+  username: string,
+  password: string,
+  email: string
+) => {
+  const json = await axios({
+    method: "POST",
+    url: `${url}auth/create`,
+    data: { username, password, email },
+  });
+  return json;
+};
