@@ -6,7 +6,7 @@ import { useAppSelector } from "./hooks";
 const App = () => {
   const app = useAppSelector((state) => state.app);
   return (
-    <div className="w-screen h-screen bg-[#202020]">
+    <div className="w-screen h-screen bg-bkg">
       {!app.loggedIn ? (
         <Login />
       ) : (

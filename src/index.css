@@ -6,15 +6,14 @@ button {
   user-select: none;
 }
 
-@layer base {
-  :root {
-    --color-custom-white: 255 255 255;
-    --color-bkg: 255 255 255;
-    --color-content: 30 41 59;
-    --color-accent1: 245 208 254;
-    --color-accent2: 153 246 227;
-    --color-themeText: 30 41 59;
-  }
+@theme {
+  --color-custom-white: #ffffff;
+  --color-bkg: #202020;
+  --color-content: #1e293b;
+  --color-accent1: #f5d0fe;
+  --color-accent2: #99f6e3;
+  --color-themeText: #1e293b;
+  --color-themeBlue: #3b82f6;
 }
 
 @layer components {
@@ -26,8 +25,21 @@ button {
   }
 
   .btn-themeBlue {
-    @apply text-white font-semibold py-2 px-8 rounded-lg bg-[#3b82f6] 
-    hover:bg-blue-200 border-2 border-[#3b82f6] hover:text-black 
+    @apply text-custom-white font-semibold py-2 px-8 rounded-lg bg-themeBlue 
+    hover:bg-blue-200 border-2 border-themeBlue hover:text-black 
     transition-all duration-300 hover:shadow-md cursor-pointer;
   }
+}
+
+.toast-error {
+  @apply bg-red-500 text-white;
+}
+.toast-success {
+  @apply bg-green-500 text-white;
+}
+.toast-info {
+  @apply bg-blue-400 text-white;
+}
+.toast-warning {
+  @apply bg-orange-500 text-white;
 }

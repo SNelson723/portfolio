@@ -47,7 +47,7 @@ export const ToastProvider = ({
   };
 
   const removeToast = (id: string) => {
-    const div = document.querySelector(`[query-id=${id}]`);
+    const div = document.querySelector(`[query-id="${id}"]`);
     if (div) {
       div.classList.remove("animate-slidein");
       div.classList.add("animate-slideout");

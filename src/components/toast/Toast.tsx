@@ -20,7 +20,7 @@ const Toast = ({ toast, onClick }: ToastCmpProps) => {
         if (progress > 0) {
           if (progressRef.current) {
             progress -= amountToDecrease;
-            progressRef.current.style.width = `${progress}%`;
+            progressRef.current!.style.width = `${progress}%`;
           } else {
             clearInterval(interval);
           }

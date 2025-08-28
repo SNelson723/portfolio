@@ -23,7 +23,7 @@ export default tseslint.config([
       ...reactHooks.configs.recommended.rules,
       "react-hooks/exhaustive-deps": 0,
       "@typescript-eslint/no-unused-expressions": 0,
-      "no-console": 2,
+      "no-console": "off",
       "@typescript-eslint/no-unused-vars": "off",
       "no-explicit-any": 0,
       "@typescript-eslint/no-explicit-any": "off",

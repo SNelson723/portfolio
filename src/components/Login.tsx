@@ -10,8 +10,10 @@ import {
 } from "../features/appSlice";
 import useWidth from "../hooks/useWidth";
 import { useState } from "react";
+import { useToast } from "./toast/hooks/useToast";
 
 const Login = () => {
+  const toast = useToast();
   const dispatch = useAppDispatch();
   const context = useAppSelector((state) => state.app);
   const [isCreating, setIsCreating] = useState<boolean>(false);
@@ -29,10 +31,11 @@ const Login = () => {
             dispatch(setLoggedIn(true));
             dispatch(setUsername(""));
             dispatch(setPassword(""));
+            toast.success("Logged in");
           }
         })
         .catch((error) => {
-          console.error("Login failed:", error);
+          toast.error("Login failed: " + error.message);
         });
     } else {
       createUser(
@@ -62,7 +65,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-screen w-screen justify-center items-center">
+    <div className="flex h-screen w-screen justify-center items-center bg-bkg">
       <div
         className={` border-2 border-slate-50 bg-slate-200 shadow-lg rounded-lg py-2 px-6`}
         style={{ width: `${width}px` }}
