@@ -29,7 +29,7 @@ export interface ToastOptions {
 export interface ToastProps {
   id: string;
   type: ToastType;
-  messgae: string;
+  message: string;
   options?: ToastOptions;
 }
 
