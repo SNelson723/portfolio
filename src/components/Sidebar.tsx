@@ -3,11 +3,11 @@ import { logout } from "../api/login";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { setLoggedIn, setUser, setToken } from "../features/appSlice";
 import { NavLink } from "react-router";
-import { baseClass, navItems } from "../nav";
+import { navItems } from "../nav";
 import { MenuIcon } from "../nav/icons";
 
 const className =
-  "absolute top-12 left-0 text-custom-white bg-stone-700 rounded-tr-lg z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-500 select-none cursor-pointer";
+  "absolute top-12 left-0 text-custom-white rounded-tr-lg z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-500 select-none cursor-pointer";
 
 const useHeight = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,7 +18,6 @@ const useHeight = () => {
       ref.current.style.height = `${window.innerHeight - 52}px`;
     };
     handleResize();
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -73,25 +72,31 @@ const Sidebar = () => {
             }`}
           >
             {navItems.map((nav, i) => (
-              <NavLink
-                key={i}
-                to={nav.path}
-                // onClick={(e) => {}}
-                className={`transition-all duration-300 flex gap-2 px-4 py-3 items-start rounded-r-lg hover:bg-stone-600 ${
-                  menuOpen
-                    ? "w-full opacity-100"
-                    : "w-0 opacity-0 overflow-hidden pointer-events-none"
-                }`}
-              >
-                <nav.icon />
-                <span
-                  className={`overflow-hidden ${
-                    menuOpen ? "opacity-100 w-[80%]" : "opacity-0 w-0"
-                  } transition-all duration-200`}
+              <div>
+                <NavLink
+                  key={i}
+                  to={nav.path}
+                  // onClick={(e) => {}}
+                  className={({ isActive }) =>
+                    `transition-all duration-300 flex gap-2 px-4 py-3 items-start rounded-r-lg hover:bg-stone-600 ${
+                      menuOpen
+                        ? "w-full opacity-100"
+                        : "w-0 opacity-0 overflow-hidden pointer-events-none"
+                    } ${isActive ? "bg-stone-500" : ""}`
+                  }
                 >
-                  {nav.label}
-                </span>
-              </NavLink>
+                  <nav.icon />
+                  <span
+                    className={`overflow-hidden ${
+                      menuOpen ? "opacity-100 w-[80%]" : "opacity-0 w-0"
+                    } transition-all duration-200`}
+                  >
+                    {nav.label}
+                  </span>
+                </NavLink>
+                {/* If the item has children, handle them here pl-8 now and py-2 */}
+                {nav.children && nav.childOpen && <div>children</div>}
+              </div>
             ))}
           </div>
           <div
