@@ -11,6 +11,7 @@ import {
 import useWidth from "../hooks/useWidth";
 import { useState } from "react";
 import { useToast } from "./toast/hooks/useToast";
+import background from "../assets/background.avif";
 
 const Login = () => {
   const toast = useToast();
@@ -62,9 +63,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-screen w-screen justify-center items-center bg-bkg">
+    <div className="flex h-screen w-screen justify-center items-center bg-bkg" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover'}}>
       <div
-        className={` border-2 border-slate-50 bg-slate-200 shadow-lg rounded-lg py-2 px-6`}
+        className={` bg-slate-200 shadow-lg rounded-lg py-2 px-6`}
         style={{ width: `${width}px` }}
       >
         <div className="text-center font-medium text-[20px] select-none">

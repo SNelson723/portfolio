@@ -10,6 +10,7 @@ import { ToastProvider } from "./components/toast/ToastProvider.tsx";
 // Pages
 import Home from "./pages/home/Home.tsx";
 import YoutubeHome from "./pages/youtube/YoutubeHome.tsx";
+import TodoHome from "./pages/todo/TodoHome.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/" element={<App />}>
               <Route index element={<Home />} />
               <Route path="youtube" element={<YoutubeHome />} />
+              <Route path="todos" element={<TodoHome />} />
             </Route>
           </Routes>
         </ToastProvider>

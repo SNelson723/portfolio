@@ -1,16 +1,19 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { logout } from "../api/login";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { setLoggedIn, setUser, setToken } from "../features/appSlice";
+import { NavLink } from "react-router";
+import { baseClass, navItems } from "../nav";
 
 const className =
-  "absolute top-0 left-0 h-full bg-[#303030] text-white z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-300";
+  "absolute top-0 left-0 h-full bg-[#303030] text-white z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-300 select-none cursor-pointer";
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
   const app = useAppSelector((state) => state.app);
   const ref = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const handleRef = () => {
     if (!ref.current || !iconRef.current) return;
@@ -22,6 +25,7 @@ const Sidebar = () => {
       "data-display",
       iconRef.current.dataset.display === "open" ? "closed" : "open"
     );
+    setMenuOpen((prev) => !prev);
   };
 
   const handleLogout = () => {
@@ -46,11 +50,53 @@ const Sidebar = () => {
         >
           Menu
         </div>
-        <div
-          className="absolute bottom-4 pl-8 w-full py-3"
-          onClick={handleLogout}
-        >
-          Logout
+        <div className="flex flex-col justify-between h-screen">
+          <div
+            className={`transition-all duration-500${
+              menuOpen
+                ? "w-full opacity-100"
+                : "w-0 overflow-hidden opacity-0 pointer-events-none"
+            }`}
+          >
+            <div
+              className={`py-3 text-center text-xl border-b font-medium ${
+                menuOpen
+                  ? "w-full opacity-100"
+                  : "w-0 opacity-0 overflow-hidden pointer-events-none"
+              }`}
+            >
+              Menu
+            </div>
+            {navItems.map((nav, i) => (
+              <NavLink
+                key={i}
+                to={nav.path}
+                // onClick={(e) => {}}
+                className={`transition-all duration-300 flex gap-2 px-4 py-3 items-start border-b border-b-custom-white/50 hover:bg-stone-600 ${
+                  menuOpen
+                    ? "w-full opacity-100"
+                    : "w-0 opacity-0 overflow-hidden pointer-events-none"
+                }`}
+              >
+                <nav.icon />
+                <span
+                  className={`${
+                    menuOpen ? "opacity-100 w-full" : "opacity-0 w-0"
+                  } transition-all duration-300`}
+                >
+                  {nav.label}
+                </span>
+              </NavLink>
+            ))}
+          </div>
+          <div
+            className={`transition-all duration-300 bottom-4 px-4 py-3 hover:bg-stone-600 ${
+              menuOpen ? "w-full opacity-100" : "w-0 opacity-0"
+            }`}
+            onClick={handleLogout}
+          >
+            Logout
+          </div>
         </div>
       </div>
     </>
