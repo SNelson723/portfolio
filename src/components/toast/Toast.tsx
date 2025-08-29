@@ -50,12 +50,12 @@ const Toast = ({ toast, onClick }: ToastCmpProps) => {
     <div
       query-id={toast.id}
       onClick={onClick}
-      className="flex flex-col justify-content-between items-center mb-2 border rounded-lg cursor-pointer min-h-[34px] animate-slidein shadow-lg z-50"
+      className="flex bg-custom-white flex-col justify-content-between items-center mb-2 border rounded-lg cursor-pointer min-h-[34px] animate-slidein shadow-lg z-50"
     >
       <div className="flex w-full">
         {useIcon ? (
           <div
-            className={`flex rounded-l-lg toast-${type} h-[57px] place-items-center justify-center px-4 border-r border-white`}
+            className={`flex rounded-tl-lg toast-${type} h-[57px] place-items-center justify-center px-4 border-r border-white`}
           >
             {getIcon()}
           </div>
@@ -68,14 +68,14 @@ const Toast = ({ toast, onClick }: ToastCmpProps) => {
           </div>
           <div
             data-testid="toast-message"
-            className="pl-2 pr-8 py-1 font-medium bg-bkg text-black"
+            className="pl-2 pr-8 py-1 font-medium bg-custom-white text-black"
           >
             {message}
           </div>
         </div>
       </div>
       {autoClose ? (
-        <div className="w-4/5 my-1 mx-2 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+        <div className="w-4/5 mt-1 mb-1 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 ml-2 mr-2">
           <div
             ref={progressRef}
             className={`toast-${type} h-2.5 rounded-full transition-all`}

@@ -1,11 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
-type Todo = {
-  id: number;
-  todo: string;
-  completed: boolean;
-  userId: number;
-};
+import type { Todo } from "../types";
 
 interface TodoState {
   dummyUrl: string;

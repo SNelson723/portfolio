@@ -15,7 +15,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <ToastProvider autoClose={true} duration={3500}>
+        <ToastProvider autoClose={true} duration={3000}>
           <Routes>
             <Route path="/" element={<App />}>
               <Route index element={<Home />} />

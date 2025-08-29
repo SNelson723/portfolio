@@ -29,3 +29,10 @@ export const createUser = async (
   });
   return json;
 };
+
+export const logout = async (url: string) => {
+  const json = await axios.post(url + "auth/logout", {
+    withCredentials: true,
+  });
+  return json;
+};

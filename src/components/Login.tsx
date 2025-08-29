@@ -24,14 +24,12 @@ const Login = () => {
       login(context.devUrl, context.username, context.password)
         .then((resp) => {
           const j = resp.data;
-          console.log("Login response:", j);
           if (j.error === 0) {
             dispatch(setToken(j.access_token));
             dispatch(setUser(j.user));
             dispatch(setLoggedIn(true));
             dispatch(setUsername(""));
             dispatch(setPassword(""));
-            toast.success("Logged in");
           }
         })
         .catch((error) => {
@@ -46,7 +44,6 @@ const Login = () => {
       )
         .then((resp) => {
           const j = resp.data;
-          console.log("Create user response:", j);
           if (j.error === 0) {
             dispatch(setEmail(""));
             setIsCreating(false);
