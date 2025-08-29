@@ -6,6 +6,19 @@ button {
   user-select: none;
 }
 
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.innerScroll {
+  overflow: auto;
+  scrollbar-color: lightgray transparent;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+}
+
 @theme {
   --color-custom-white: #ffffff;
   --color-bkg: #202020;

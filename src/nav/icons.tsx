@@ -27,8 +27,8 @@ const YtIcon = ({ className = "", fill = "#fff" }: IconProps) => {
   return (
     <svg
       fill={fill}
-      width="25px"
-      height="25px"
+      width="24px"
+      height="24px"
       viewBox="0 -4 32 32"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
@@ -39,4 +39,25 @@ const YtIcon = ({ className = "", fill = "#fff" }: IconProps) => {
   );
 };
 
-export { TodoIcon, YtIcon };
+const MenuIcon = ({ className = "", fill = "#fff" }: IconProps) => {
+  return (
+    <svg
+      width="30px"
+      height="30px"
+      viewBox="0 0 24 24"
+      fill={fill}
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M4 6H20M4 10H20M4 14H20"
+        stroke={fill}
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export { TodoIcon, YtIcon, MenuIcon };
