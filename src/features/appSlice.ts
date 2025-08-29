@@ -9,7 +9,7 @@ interface AppState {
   password: string;
   token: string;
   email: string;
-  user: User | null;
+  user: User;
 }
 
 const initialState: AppState = {
@@ -20,7 +20,7 @@ const initialState: AppState = {
   password: "",
   token: "",
   email: "",
-  user: null,
+  user: { id: 0, email: "", username: "" },
 };
 
 export const appSlice = createSlice({
@@ -45,7 +45,7 @@ export const appSlice = createSlice({
     setEmail: (state, action: PayloadAction<string>) => {
       state.email = action.payload;
     },
-    setUser: (state, action: PayloadAction<User | null>) => {
+    setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
   },

@@ -4,14 +4,12 @@ import type { Todo } from "../types";
 interface TodoState {
   dummyUrl: string;
   url: string;
-  userId: number;
   todos: Todo[];
 }
 
 const initialState: TodoState = {
   dummyUrl: "https://dummyjson.com/todos",
   url: "",
-  userId: 1,
   todos: [],
 };
 

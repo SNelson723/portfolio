@@ -29,7 +29,7 @@ const Sidebar = () => {
       const j = resp.data;
       if (j.error === 0) {
         dispatch(setToken(""));
-        dispatch(setUser(null));
+        dispatch(setUser({ id: 0, email: "", username: "" }));
         dispatch(setLoggedIn(false));
       }
     });
@@ -63,9 +63,8 @@ const Sidebar = () => {
             }`}
           >
             {navItems.map((nav, i) => (
-              <div>
+              <div key={i}>
                 <NavLink
-                  key={i}
                   to={nav.path}
                   // onClick={(e) => {}}
                   className={({ isActive }) =>
