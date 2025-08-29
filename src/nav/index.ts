@@ -1,4 +1,4 @@
-import { TodoIcon, YtIcon, WeatherIcon } from "./icons";
+import { TodoIcon, YtIcon, WeatherIcon, QuizIcon } from "./icons";
 
 export type NavItem = {
   icon: React.FC;
@@ -32,6 +32,13 @@ export const navItems: NavItem[] = [
     icon: WeatherIcon,
     label: "Weather",
     path: "/weather",
+    children: [],
+    childOpen: false,
+  },
+  {
+    icon: QuizIcon,
+    label: "Quiz",
+    path: "/quiz",
     children: [],
     childOpen: false,
   },

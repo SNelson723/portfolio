@@ -7,7 +7,7 @@ import { navItems } from "../nav";
 import { MenuIcon } from "../nav/icons";
 
 const className =
-  "absolute top-12 left-0 text-custom-white rounded-tr-lg z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-500 select-none cursor-pointer";
+  "absolute top-12 left-0 text-custom-white bg-stone-700/60 z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-500 select-none cursor-pointer";
 
 const useHeight = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -15,7 +15,7 @@ const useHeight = () => {
   useEffect(() => {
     const handleResize = () => {
       if (!ref.current) return;
-      ref.current.style.height = `${window.innerHeight - 52}px`;
+      ref.current.style.height = `${window.innerHeight - 49}px`;
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -53,14 +53,14 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="absolute flex gap-4 text-custom-white top-2 left-2 select-none">
+      <div className="absolute flex gap-[5.5px] text-custom-white py-1 left-2 border-r border-gray-200 pr-20 select-none">
         <div
-          className="p-1 rounded-full cursor-pointer hover:bg-stone-600"
+          className="p-1 mt-0.5 rounded-full cursor-pointer hover:bg-stone-300"
           onClick={handleRef}
         >
-          <MenuIcon />
+          <MenuIcon fill="rgb(30, 41, 59)" />
         </div>
-        <span className="py-1.5 font-medium text-sm">{app.user?.username}</span>
+        <span className="py-2.5 font-medium text-sm text-content">{app.user?.username}</span>
       </div>
       <div className={className} ref={ref} data-display="closed">
         <div className="flex flex-col justify-between h-full">

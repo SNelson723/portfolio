@@ -8,10 +8,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastProvider } from "./components/toast/ToastProvider.tsx";
 
 // Pages
-import Home from "./pages/home/Home.tsx";
-import YoutubeHome from "./pages/youtube/YoutubeHome.tsx";
-import TodoHome from "./pages/todo/TodoHome.tsx";
-import WeatherHome from "./pages/weather/Weather.tsx";
+import Home from "./pages/home/Home";
+import YoutubeHome from "./pages/youtube/YoutubeHome";
+import TodoHome from "./pages/todo/TodoHome";
+import WeatherHome from "./pages/weather/Weather";
+import QuizHome from "./pages/quiz/QuizHome";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="youtube" element={<YoutubeHome />} />
               <Route path="todos" element={<TodoHome />} />
               <Route path="weather" element={<WeatherHome />} />
+              <Route path="quiz" element={<QuizHome />} />
             </Route>
           </Routes>
         </ToastProvider>

@@ -21,7 +21,8 @@ button {
 
 @theme {
   --color-custom-white: #ffffff;
-  --color-bkg: #202020;
+  --color-bkg: rgb(240, 245, 255);
+  --color-content: rgb(30, 41, 59);
   --color-content: #1e293b;
   --color-accent1: #f5d0fe;
   --color-accent2: #99f6e3;
@@ -31,7 +32,7 @@ button {
 
 @layer components {
   .input {
-    @apply bg-white text-black
+    @apply bg-custom-white text-black
     flex w-full flex-1 rounded-lg py-1.5 px-2
     focus:shadow-xl focus:border focus:border-black
     focus:ring-0;
