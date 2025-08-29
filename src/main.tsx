@@ -13,6 +13,7 @@ import YoutubeHome from "./pages/youtube/YoutubeHome";
 import TodoHome from "./pages/todo/TodoHome";
 import WeatherHome from "./pages/weather/Weather";
 import QuizHome from "./pages/quiz/QuizHome";
+import BlogHome from "./pages/blog/BlogHome";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="todos" element={<TodoHome />} />
               <Route path="weather" element={<WeatherHome />} />
               <Route path="quiz" element={<QuizHome />} />
+              <Route path="blog" element={<BlogHome />} />
             </Route>
           </Routes>
         </ToastProvider>

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body {
+  overflow: hidden;
+}
+
 button {
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -17,6 +21,13 @@ button {
   scrollbar-color: lightgray transparent;
   scrollbar-width: thin;
   overflow-x: hidden;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    width: 0em;
+    height: 0em;
+  }
 }
 
 @theme {

@@ -21,7 +21,7 @@ const TitleBar = () => {
   const app = useAppSelector((state) => state.app);
 
   return (
-    <div ref={ref} className="flex items-center pl-4 absolute top-0 left-48 w-full h-12">
+    <div ref={ref} className="flex justify-between items-center pl-4 absolute top-0 left-48 w-full h-12">
       <div>Welcome {app.user?.username}</div>
       <div>title bar</div>
     </div>

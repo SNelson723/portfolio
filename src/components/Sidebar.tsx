@@ -1,34 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { logout } from "../api/login";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { setLoggedIn, setUser, setToken } from "../features/appSlice";
 import { NavLink } from "react-router";
 import { navItems } from "../nav";
-import { MenuIcon } from "../nav/icons";
+import { MenuIcon, LogoutIcon } from "../nav/icons";
 
 const className =
-  "absolute top-12 left-0 text-custom-white bg-stone-700/60 z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-500 select-none cursor-pointer";
-
-const useHeight = () => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (!ref.current) return;
-      ref.current.style.height = `${window.innerHeight - 49}px`;
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return { ref };
-};
+  "absolute top-12 left-0 text-custom-white bg-stone-700 z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-500 select-none cursor-pointer";
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
   const app = useAppSelector((state) => state.app);
-  const { ref } = useHeight();
+  const ref = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const handleRef = () => {
@@ -60,9 +44,16 @@ const Sidebar = () => {
         >
           <MenuIcon fill="rgb(30, 41, 59)" />
         </div>
-        <span className="py-2.5 font-medium text-sm text-content">{app.user?.username}</span>
+        <span className="py-2.5 font-medium text-sm text-content">
+          {app.user?.username}
+        </span>
       </div>
-      <div className={className} ref={ref} data-display="closed">
+      <div
+        className={className}
+        ref={ref}
+        style={{ height: "calc(100vh - 49px)" }}
+        data-display="closed"
+      >
         <div className="flex flex-col justify-between h-full">
           <div
             className={`max-h-full innerScroll transition-all duration-500${
@@ -78,7 +69,7 @@ const Sidebar = () => {
                   to={nav.path}
                   // onClick={(e) => {}}
                   className={({ isActive }) =>
-                    `transition-all duration-300 flex gap-2 px-4 py-3 items-start rounded-r-lg hover:bg-stone-600 ${
+                    `transition-all duration-300 flex gap-2 px-2 py-3 items-start rounded-r-lg hover:bg-stone-600 ${
                       menuOpen
                         ? "w-full opacity-100"
                         : "w-0 opacity-0 overflow-hidden pointer-events-none"
@@ -100,13 +91,14 @@ const Sidebar = () => {
             ))}
           </div>
           <div
-            className={`transition-all bottom-4 px-4 py-3 hover:bg-stone-600 ${
+            className={`flex gap-1 transition-all bottom-4 px-2 py-3 hover:bg-stone-600 ${
               menuOpen
                 ? "w-full opacity-100 duration-300"
                 : "w-0 opacity-0 duration-100"
             }`}
             onClick={handleLogout}
           >
+            <LogoutIcon />
             Logout
           </div>
         </div>

@@ -1,4 +1,11 @@
-import { TodoIcon, YtIcon, WeatherIcon, QuizIcon } from "./icons";
+import {
+  TodoIcon,
+  YtIcon,
+  WeatherIcon,
+  QuizIcon,
+  HomeIcon,
+  BlogIcon,
+} from "./icons";
 
 export type NavItem = {
   icon: React.FC;
@@ -14,6 +21,13 @@ export const activeClass = "bg-[rgb(174,199,242)] text-white";
 
 // Set path to "#" if there are children to avoid bad navigation behavior
 export const navItems: NavItem[] = [
+  {
+    icon: HomeIcon,
+    label: "Home",
+    path: "/",
+    children: [],
+    childOpen: false,
+  },
   {
     icon: TodoIcon,
     label: "Todos",
@@ -39,6 +53,13 @@ export const navItems: NavItem[] = [
     icon: QuizIcon,
     label: "Quiz",
     path: "/quiz",
+    children: [],
+    childOpen: false,
+  },
+  {
+    icon: BlogIcon,
+    label: "Blog",
+    path: "/blog",
     children: [],
     childOpen: false,
   },
