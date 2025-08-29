@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { logout } from "../api/login";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import {
@@ -12,27 +12,7 @@ import { navItems } from "../nav";
 import { MenuIcon, LogoutIcon } from "../nav/icons";
 
 const className =
-  "absolute top-12 left-0 text-custom-white bg-stone-700 z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-500 select-none cursor-pointer";
-
-// const useClickOutside = () => {
-//   const ref = useRef<HTMLDivElement>(null);
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const handleClickOutside = (event: MouseEvent) => {
-//     if (ref.current && !ref.current.contains(event.target as Node)) {
-//       setIsOpen(false);
-//     }
-//   };
-
-//   useEffect(() => {
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, []);
-
-//   return { ref, isOpen, setIsOpen };
-// };
+  "absolute top-12 left-0 text-custom-white bg-gradient-to-l from-sky-300/80 via-blue-500 via-50% to-indigo-500 z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-500 select-none cursor-pointer";
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
@@ -62,7 +42,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="absolute flex gap-[10px] text-custom-white py-1 left-0 pl-2 border-r border-gray-200 pr-24 select-none shadow-[-1px_3px_6px_1px_rgba(0,0,0,0.1)]">
+      <div className="absolute bg-slate-200 flex gap-[10px] text-custom-white py-1 left-0 pl-2 border-r border-gray-200 pr-24 select-none shadow-[-1px_3px_6px_1px_rgba(0,0,0,0.1)]">
         <div
           className="p-1 mt-0.5 rounded-full cursor-pointer hover:bg-stone-300"
           onClick={handleRef}
@@ -100,7 +80,7 @@ const Sidebar = () => {
                       menuOpen
                         ? "w-full opacity-100"
                         : "w-0 opacity-0 overflow-hidden pointer-events-none"
-                    } ${isActive ? "bg-stone-500" : ""}`
+                    } ${isActive ? "bg-gray-400/85" : ""}`
                   }
                 >
                   <nav.icon />

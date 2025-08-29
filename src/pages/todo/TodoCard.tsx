@@ -28,7 +28,7 @@ const TodoCard = ({ task }: TodoCardProps) => {
     console.log("Delete", id, user_id);
   };
   return (
-    <div className="flex justify-between items-center p-2.5 rounded-lg hover:bg-themeLiteBlue/20 shadow-[1px_2px_5px_1px_lightgray] cursor-default">
+    <div className="flex justify-between items-center p-2.5 rounded-lg hover:bg-sky-200/45 bg-custom-white shadow-[1px_2px_5px_1px_lightgray] cursor-default">
       <p className={`${complete ? "" : "text-content"}`}>{todo}</p>
       <div className="flex gap-1">
         <IconBtn

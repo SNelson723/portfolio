@@ -7,7 +7,7 @@ import TitleBar from "./components/TitleBar";
 const App = () => {
   const app = useAppSelector((state) => state.app);
   return (
-    <div className="w-screen h-screen bg-bkg overflow-hidden no-scrollbar">
+    <div className="w-screen h-screen bg-bkg/90 overflow-hidden no-scrollbar">
       {!app.loggedIn ? (
         <Login />
       ) : (

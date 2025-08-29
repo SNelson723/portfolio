@@ -32,7 +32,7 @@ button {
 
 @theme {
   --color-custom-white: #ffffff;
-  --color-bkg: rgb(210, 235, 240);
+  --color-bkg: #7DD3FC;
   --color-content: rgb(30, 41, 59);
   --color-content: #1e293b;
   --color-accent1: #f5d0fe;
