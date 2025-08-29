@@ -1,6 +1,7 @@
 interface IconProps {
   className?: string;
   fill?: string;
+  stroke?: string;
 }
 
 const HomeIcon = ({ className = "", fill = "#fff" }: IconProps) => {
@@ -279,6 +280,68 @@ const BlogIcon = ({ className = "", fill = "#fff" }: IconProps) => {
   );
 };
 
+const TrashIcon = ({
+  className = "",
+  fill = "none",
+  stroke = "#000000",
+}: IconProps) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill={fill}
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7M8 7H16"
+        className={stroke}
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+const EditIcon = ({
+  className = "",
+  fill = "#fff",
+  stroke = "#000000",
+}: IconProps) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <title />
+
+      <g id="Complete">
+        <g id="edit">
+          <g>
+            <path
+              d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8"
+              fill="none"
+              className={stroke}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="3"
+            />
+
+            <polygon
+              fill="none"
+              points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8"
+              className={stroke}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="3"
+            />
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+};
+
 export {
   HomeIcon,
   TodoIcon,
@@ -288,4 +351,6 @@ export {
   QuizIcon,
   LogoutIcon,
   BlogIcon,
+  TrashIcon,
+  EditIcon,
 };

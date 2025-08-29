@@ -5,12 +5,14 @@ interface TodoState {
   dummyUrl: string;
   url: string;
   todos: Todo[];
+  refresh: boolean;
 }
 
 const initialState: TodoState = {
   dummyUrl: "https://dummyjson.com/todos",
   url: "",
   todos: [],
+  refresh: false,
 };
 
 const todoSlice = createSlice({
@@ -34,8 +36,12 @@ const todoSlice = createSlice({
         t.id === action.payload.id ? { ...t, todo: action.payload.todo } : t
       );
     },
+    setRefresh: (state) => {
+      state.refresh = !state.refresh;
+    },
   },
 });
 
-export const { setTodos, addTodo, deleteTodo, modifyTodo } = todoSlice.actions;
+export const { setTodos, addTodo, deleteTodo, modifyTodo, setRefresh } =
+  todoSlice.actions;
 export default todoSlice.reducer;

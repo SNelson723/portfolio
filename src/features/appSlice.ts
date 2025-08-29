@@ -10,6 +10,7 @@ interface AppState {
   token: string;
   email: string;
   user: User;
+  currentPage: string;
 }
 
 const initialState: AppState = {
@@ -21,6 +22,7 @@ const initialState: AppState = {
   token: "",
   email: "",
   user: { id: 0, email: "", username: "" },
+  currentPage: "Home",
 };
 
 export const appSlice = createSlice({
@@ -48,6 +50,9 @@ export const appSlice = createSlice({
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
+    setCurrentPage: (state, action: PayloadAction<string>) => {
+      state.currentPage = action.payload;
+    },
   },
 });
 
@@ -59,5 +64,6 @@ export const {
   setToken,
   setEmail,
   setUser,
+  setCurrentPage,
 } = appSlice.actions;
 export default appSlice.reducer;

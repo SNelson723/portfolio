@@ -32,27 +32,34 @@ button {
 
 @theme {
   --color-custom-white: #ffffff;
-  --color-bkg: rgb(240, 245, 255);
+  --color-bkg: rgb(210, 235, 240);
   --color-content: rgb(30, 41, 59);
   --color-content: #1e293b;
   --color-accent1: #f5d0fe;
   --color-accent2: #99f6e3;
   --color-themeText: #1e293b;
   --color-themeBlue: #3b82f6;
+  --color-themeOrange: #f97316;
+  --color-themeGreen: #10b981;
+  --color-themeLiteGreen: rgb(167, 243, 208);
+  --color-themeLiteBlue: rgb(191, 219, 254);
+  --color-themeLiteOrange: rgb(254, 215, 170);
 }
 
 @layer components {
   .input {
-    @apply bg-custom-white text-black
-    flex w-full flex-1 rounded-lg py-1.5 px-2
-    focus:shadow-xl focus:border focus:border-black
-    focus:ring-0;
+    @apply bg-custom-white text-content border-2 border-content focus:outline-none
+    flex w-full flex-1 rounded-lg py-1.5 px-2 focus:shadow-xl focus:border-themeBlue;
   }
 
   .btn-themeBlue {
     @apply text-custom-white font-semibold py-2 px-8 rounded-lg bg-themeBlue 
     hover:bg-blue-200 border-2 border-themeBlue hover:text-black 
     transition-all duration-300 hover:shadow-md cursor-pointer;
+  }
+
+  .btn-icon {
+    @apply p-0.5 cursor-pointer transition-all duration-200;
   }
 }
 

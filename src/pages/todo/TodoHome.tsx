@@ -3,6 +3,8 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getTodos } from "../../api/todos";
 import { useToast } from "../../components/toast/hooks/useToast";
 import { setTodos } from "../../features/todoSlice";
+import TodoCard from "./TodoCard";
+import TodoList from "./TodoList";
 
 const TodoHome = () => {
   const dispatch = useAppDispatch();
@@ -11,17 +13,38 @@ const TodoHome = () => {
   const toast = useToast();
 
   useEffect(() => {
-    getTodos(context.devUrl, context.token, context.user.id).then((resp) => {
-      const j = resp.data;
-      if (j.error === 0) {
-        console.log(j);
-      }
-    });
+    getData();
   }, []);
 
+  const getData = () => {
+    getTodos(context.devUrl, context.token, context.user.id)
+      .then((resp) => {
+        const j = resp.data;
+        if (j.error === 0) {
+          dispatch(setTodos(j.todos));
+        }
+      })
+      .catch((err) => toast.error(err.message));
+  };
+
+  const handleAdd = () => {};
+
+  const sampleTodo = {
+    id: 1,
+    todo: "Test this out",
+    complete: false,
+    user_id: 1,
+    category: "dev",
+  };
+
   return (
-    <div>
-      <h1>TodoHome Page</h1>
+    <div className="flex flex-col gap-4 justify-center items-center w-full h-full">
+      <div className="select-none">Progress</div>
+      <div className="flex gap-2 w-1/2">
+        <input className="input" />
+        <button className="btn-themeBlue">Add</button>
+      </div>
+      <TodoList />
     </div>
   );
 };

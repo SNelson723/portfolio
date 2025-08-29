@@ -9,6 +9,9 @@ export default {
       sm: "0125rem",
     },
     extend: {
+      boxShadow: {
+        bottom: '0 4px 6px -2px rgba(0, 0, 0, 0.3)',
+      },
       keyframes: {
         appear: {
           "0%": {

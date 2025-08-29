@@ -21,11 +21,14 @@ const TitleBar = () => {
   const app = useAppSelector((state) => state.app);
 
   return (
-    <div ref={ref} className="flex justify-between items-center pl-4 absolute top-0 left-48 w-full h-12">
-      <div>Welcome {app.user?.username}</div>
-      <div>title bar</div>
+    <div
+      ref={ref}
+      className="flex justify-between items-center pl-4 absolute top-0 left-48 w-full h-12 shadow-[1px_3px_6px_1px_rgba(0,0,0,0.1)]"
+    >
+      <div className="shadow-custom">Welcome {app.user?.username}</div>
+      <div className="shadow-custom">title bar</div>
     </div>
-  )
+  );
 };
 
 export default TitleBar;

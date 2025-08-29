@@ -1,13 +1,38 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { logout } from "../api/login";
 import { useAppSelector, useAppDispatch } from "../hooks";
-import { setLoggedIn, setUser, setToken } from "../features/appSlice";
+import {
+  setLoggedIn,
+  setUser,
+  setToken,
+  setCurrentPage,
+} from "../features/appSlice";
 import { NavLink } from "react-router";
 import { navItems } from "../nav";
 import { MenuIcon, LogoutIcon } from "../nav/icons";
 
 const className =
   "absolute top-12 left-0 text-custom-white bg-stone-700 z-50 data-[display=closed]:w-0 data-[display=open]:w-48 transition-all duration-500 select-none cursor-pointer";
+
+// const useClickOutside = () => {
+//   const ref = useRef<HTMLDivElement>(null);
+//   const [isOpen, setIsOpen] = useState(false);
+
+//   const handleClickOutside = (event: MouseEvent) => {
+//     if (ref.current && !ref.current.contains(event.target as Node)) {
+//       setIsOpen(false);
+//     }
+//   };
+
+//   useEffect(() => {
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, []);
+
+//   return { ref, isOpen, setIsOpen };
+// };
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
@@ -37,7 +62,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="absolute flex gap-[5.5px] text-custom-white py-1 left-2 border-r border-gray-200 pr-20 select-none">
+      <div className="absolute flex gap-[10px] text-custom-white py-1 left-0 pl-2 border-r border-gray-200 pr-24 select-none shadow-[-1px_3px_6px_1px_rgba(0,0,0,0.1)]">
         <div
           className="p-1 mt-0.5 rounded-full cursor-pointer hover:bg-stone-300"
           onClick={handleRef}
@@ -45,7 +70,7 @@ const Sidebar = () => {
           <MenuIcon fill="rgb(30, 41, 59)" />
         </div>
         <span className="py-2.5 font-medium text-sm text-content">
-          {app.user?.username}
+          {app.currentPage}
         </span>
       </div>
       <div
@@ -66,7 +91,10 @@ const Sidebar = () => {
               <div key={i}>
                 <NavLink
                   to={nav.path}
-                  // onClick={(e) => {}}
+                  onClick={() => {
+                    dispatch(setCurrentPage(nav.label));
+                    handleRef();
+                  }}
                   className={({ isActive }) =>
                     `transition-all duration-300 flex gap-2 px-2 py-3 items-start rounded-r-lg hover:bg-stone-600 ${
                       menuOpen
